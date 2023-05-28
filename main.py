@@ -1,4 +1,4 @@
-# 2
+# 3
 
 from bs4 import BeautifulSoup
 import requests
@@ -10,7 +10,7 @@ def parser():
 
         responce = requests.get(url)
         soup = BeautifulSoup(responce.content, 'lxml') # <- pip install lxml
-        items = soup.find_all('table')
+        items = soup.find_all(class_="example-class")
 
         if items:
             for item in items:
