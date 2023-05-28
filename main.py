@@ -1,4 +1,4 @@
-# 1
+# 2
 
 from bs4 import BeautifulSoup
 import requests
@@ -9,11 +9,14 @@ def parser():
         url = "https://www.example.com"
 
         responce = requests.get(url)
-        soup = BeautifulSoup(responce.content, 'html.parser')
-        items = soup.find_all('h1')
+        soup = BeautifulSoup(responce.content, 'lxml') # <- pip install lxml
+        items = soup.find_all('table')
 
-        for item in items:
-            print(item.text)
+        if items:
+            for item in items:
+                print(item.text)
+        else:
+            print('немає елементів')
     except:
         print("Немаэ пiдключення", "Error 404")
 
