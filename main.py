@@ -10,10 +10,13 @@ def parser():
 
         responce = requests.get(url)
         soup = BeautifulSoup(responce.content, 'html.parser')
-        items = soup.find_all('h1')
+        items = soup.find_all('h2')
 
-        for item in items:
-            print(item.text)
+        if items:
+            for item in items:
+                print(item.text)
+        else:
+            print('немає елементів')
     except:
         print("Немаэ пiдключення", "Error 404")
 
